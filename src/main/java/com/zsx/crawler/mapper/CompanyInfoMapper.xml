@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbd.mapper.StudentMappers">
+
+    <insert id="addCompanyInfo" parameterType="java.util.List">
+        insert into attachment_table (companyname, legalperson, registeredfund, registeredtime, phone, email, address, qita)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.companyName,jdbcType=VARCHAR},
+                #{item.legalPerson,jdbcType=VARCHAR},
+                #{item.registeredFund,jdbcType=VARCHAR},
+                #{item.registeredTime,jdbcType=DATETIME},
+                #{item.phone,jdbcType=VARCHAR},
+                #{item.email,jdbcType=VARCHAR},
+                #{item.qita,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
